@@ -151,7 +151,7 @@ export class PressbooksReorderableMultiselect extends LitElement {
         height: auto;
         list-style: none;
         margin: 0;
-        max-height: 20rem;
+        max-height: 12rem;
         max-width: var(--pb-selected-options-max-width, 100%);
         overflow-y: scroll;
         padding: 0;
@@ -366,27 +366,23 @@ export class PressbooksReorderableMultiselect extends LitElement {
     this.hint = this.querySelector('hint').innerText;
 
     const options = this.querySelectorAll('option');
-    const values = this.querySelectorAll('value');
+    const input = this.querySelector('input[type="hidden"]');
+    this.name = input.getAttribute('name');
 
-    if (options) {
-      Array.prototype.forEach.call(options, option => {
-        this.options[option.getAttribute('value')] = option.innerText;
-      });
-    }
+    Array.prototype.forEach.call(options, option => {
+      this.options[option.getAttribute('value')] = option.innerText;
+    });
 
-    if (values) {
-      Array.prototype.forEach.call(Object.values(values), value => {
-        this.selectedOptions[value.getAttribute('value')] =
-          this.options[value.getAttribute('value')];
-        value.remove();
-      });
-    }
+    Array.prototype.forEach.call(input.value.split(','), value => {
+      this.selectedOptions[value] = this.options[value];
+    });
+
+    input.remove();
+    this.querySelector('label').remove();
+    this.querySelector('hint').remove();
 
     this.updateAvailableOptions();
     this.updateSelectedOptions();
-
-    this.querySelector('label').remove();
-    this.querySelector('hint').remove();
   }
 
   disconnectedCallback() {

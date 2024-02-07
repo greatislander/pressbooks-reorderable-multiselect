@@ -19,6 +19,8 @@
     "start": "web-dev-server",
     "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
     "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore",
+    "storybook": "npm run analyze -- --exclude dist && web-dev-server -c .storybook/server.mjs",
+    "storybook:build": "npm run analyze -- --exclude dist && build-storybook",
     "test": "web-test-runner --coverage",
     "test:watch": "web-test-runner --watch",
     "prepare": "husky install"
@@ -33,6 +35,7 @@
     "@open-wc/eslint-config": "^12.0.0",
     "@open-wc/testing": "^4.0.0",
     "@web/dev-server": "^0.4.2",
+    "@web/dev-server-storybook": "2.0.1",
     "@web/test-runner": "^0.18.0",
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^9.0.0",

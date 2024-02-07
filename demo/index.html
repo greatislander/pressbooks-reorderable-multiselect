@@ -26,13 +26,10 @@
 <body>
   <main id="main">
     <form action="post">
-    <pressbooks-reorderable-multiselect name="dwarves">
+    <pressbooks-reorderable-multiselect>
       <label>Dwarves</label>
       <hint>Choose some dwarves.</hint>
-      <value value="thorin" />
-      <value value="bifur" />
-      <value value="bombur" />
-      <value value="dwalin" />
+      <input type="hidden" name="dwarves" value="thorin,bifur,bombur,dwalin" />
       <select name="options">
         <option value="thorin">Thorin</option>
         <option value="dwalin">Dwalin</option>
