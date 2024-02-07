@@ -1,1 +1,1 @@
-export { PressbooksReorderableSelect } from './src/PressbooksReorderableSelect.js';
+export { PressbooksReorderableMultiselect } from './src/PressbooksReorderableMultiselect.js';
