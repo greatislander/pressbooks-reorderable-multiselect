@@ -2,11 +2,10 @@
 
 [![Latest version](https://badgen.net/npm/v/@pressbooks/reorderable-multiselect)](https://npmjs.com/package/@pressbooks/reorderable-multiselect) [![MIT license](https://badgen.net/npm/license/@pressbooks/reorderable-multiselect)](https://github.com/pressbooks/reorderable-multiselect/tree/main/LICENSE) 
 
-A web component which enhances the native `<select multiple>` element, built with [Lit](https://lit.dev). This web
+A web component which allows users to select multiple items from a list and customize the order in which they appear, built with [Lit](https://lit.dev). This web
 component follows the [open-wc](https://github.com/open-wc/open-wc) recommendations.
 
-It owes a great debt to [prior work](https://github.com/microsoft/sonder-ui/tree/master/src/components/multiselect) and
-[research](https://www.24a11y.com/2019/select-your-poison-part-2/) by Sarah Higley.
+It is largely based on the [ARIA Listbox](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/) pattern.
 
 ## Installation
 
