@@ -1,5 +1,6 @@
 .editorconfig
 .github
+.husky
 .storybook
 .vscode
 commitlint.config.js
