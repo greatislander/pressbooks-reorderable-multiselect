@@ -17,16 +17,11 @@
       width: 100%;
       padding-inline: 1rem;
     }
-
-    main * + * {
-      margin-block-start: 1.5rem;
-    }
   </style>
 </head>
 <body>
   <main id="main">
-    <form action="post">
-    <pressbooks-reorderable-multiselect>
+    <pressbooks-reorderable-multiselect data-messages='{"Moved to position $1":"Déplacé au poste 1"}'>
       <label>Dwarves</label>
       <hint>Choose some dwarves.</hint>
       <input type="hidden" name="dwarves" value="thorin,bifur,bombur,dwalin" />
@@ -46,8 +41,6 @@
         <option value="ori">Ori</option>
       </select>
     </pressbooks-reorderable-multiselect>
-    <button>Submit</button>
-    </form>
   </main>
 
   <script type="module" src="../pressbooks-reorderable-multiselect.js"></script>

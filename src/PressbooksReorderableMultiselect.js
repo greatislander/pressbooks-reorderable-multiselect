@@ -12,6 +12,17 @@ export class PressbooksReorderableMultiselect extends LitElement {
         box-sizing: border-box;
       }
 
+      .visually-hidden {
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        width: 1px;
+        clip: rect(1px 1px 1px 1px);
+        clip: rect(1px, 1px, 1px, 1px);
+        font-size: 14px;
+        white-space: nowrap;
+      }
+
       label {
         color: var(--pb-label-color, #000);
         display: block;
@@ -190,6 +201,7 @@ export class PressbooksReorderableMultiselect extends LitElement {
 
   static get properties() {
     return {
+      messages: { type: Object },
       name: { type: String },
       label: { type: String },
       hint: { type: String },
@@ -199,6 +211,7 @@ export class PressbooksReorderableMultiselect extends LitElement {
       selectedOptions: { type: Object },
       availableOptions: { type: Object },
       selectedAvailableOption: { type: String },
+      actionMessage: { type: String },
       ListboxActions: { type: Object },
       Keys: { type: Object },
     };
@@ -207,6 +220,7 @@ export class PressbooksReorderableMultiselect extends LitElement {
   constructor() {
     super();
 
+    this.messages = {};
     this.label = '';
     this.hint = '';
     this.listBoxHasFocus = false;
@@ -215,6 +229,7 @@ export class PressbooksReorderableMultiselect extends LitElement {
     this.selectedOptions = {};
     this.availableOptions = {};
     this.selectedAvailableOption = '';
+    this.actionMessage = null;
     this.ListboxActions = {
       MoveUp: 'MoveUp',
       MoveDown: 'MoveDown',
@@ -239,14 +254,6 @@ export class PressbooksReorderableMultiselect extends LitElement {
       Tab: 'Tab',
       Up: 'ArrowUp',
     };
-  }
-
-  get _options() {
-    return this.querySelectorAll('option');
-  }
-
-  get _values() {
-    return this.querySelectorAll('input[type="hidden"]');
   }
 
   labelTemplate() {
@@ -291,7 +298,8 @@ export class PressbooksReorderableMultiselect extends LitElement {
     return html` <select
         id="available-options"
         @change="${this._handleSelectChange}"
-        aria-label="Add to selection"
+        aria-label="${this.messages['Available options'] ??
+        'Available options'}"
         ?disabled="${Object.keys(this.availableOptions).length === 0}"
       >
         ${Object.entries(this.availableOptions).map(option =>
@@ -306,7 +314,7 @@ export class PressbooksReorderableMultiselect extends LitElement {
         @click=${this._handleClick}
         ?disabled="${Object.keys(this.availableOptions).length === 0}"
       >
-        Add
+        ${this.messages.Add ?? 'Add'}
       </button>`;
   }
 
@@ -323,7 +331,7 @@ export class PressbooksReorderableMultiselect extends LitElement {
           Object.keys(this.selectedOptions).indexOf(this.activeDescendant) ===
             0}"
         >
-          Move Up
+          ${this.messages['Move Up'] ?? 'Move Up'}
         </button>
         <button
           type="button"
@@ -335,7 +343,7 @@ export class PressbooksReorderableMultiselect extends LitElement {
           Object.keys(this.selectedOptions).indexOf(this.activeDescendant) ===
             Object.keys(this.selectedOptions).length - 1}"
         >
-          Move Down
+          ${this.messages['Move Down'] ?? 'Move Down'}
         </button>
         <button
           type="button"
@@ -344,8 +352,16 @@ export class PressbooksReorderableMultiselect extends LitElement {
           @click=${this._handleClick}
           ?disabled="${!this.activeDescendant}"
         >
-          Remove
+          ${this.messages.Remove ?? 'Remove'}
         </button>
+      </div>
+    `;
+  }
+
+  liveRegionTemplate() {
+    return html`
+      <div class="visually-hidden" aria-live="polite">
+        ${ifDefined(this.actionMessage)}
       </div>
     `;
   }
@@ -356,11 +372,16 @@ export class PressbooksReorderableMultiselect extends LitElement {
         ${this.selectedOptionsTemplate()}
         ${this.selectedOptionsControlsTemplate()}
       </div>
-      ${this.availableOptionsTemplate()} ${this.hintTemplate()}`;
+      ${this.availableOptionsTemplate()} ${this.hintTemplate()}
+      ${this.liveRegionTemplate()}`;
   }
 
   connectedCallback() {
     super.connectedCallback();
+
+    if (this.dataset.messages) {
+      this.messages = JSON.parse(this.dataset.messages);
+    }
 
     this.label = this.querySelector('label').innerText;
     this.hint = this.querySelector('hint').innerText;
@@ -424,11 +445,23 @@ export class PressbooksReorderableMultiselect extends LitElement {
       this.updateIndex(1);
     } else if (event.target.closest('.remove')) {
       delete this.selectedOptions[this.activeDescendant];
+      this.actionMessage = this.messages['Removed $1 from selection']
+        ? this.messages['Removed $1 from selection'].replace(
+            '$1',
+            this.options[this.activeDescendant],
+          )
+        : `Removed ${this.options[this.activeDescendant]} from selection`;
       this.updateAvailableOptions();
       this.activeDescendant = null;
     } else if (event.target.closest('.add')) {
       this.selectedOptions[this.selectedAvailableOption] =
         this.options[this.selectedAvailableOption];
+      this.actionMessage = this.messages['Added $1 to selection']
+        ? this.messages['Added $1 to selection'].replace(
+            '$1',
+            this.options[this.activeDescendant],
+          )
+        : `Added ${this.options[this.activeDescendant]} to selection`;
       this.updateAvailableOptions();
     }
 
@@ -500,6 +533,10 @@ export class PressbooksReorderableMultiselect extends LitElement {
     }
 
     this.selectedOptions = Object.fromEntries(list);
+
+    this.actionMessage = this.messages['Moved to position $1']
+      ? this.messages['Moved to position $1'].replace('$1', destIndex + 1)
+      : `Moved to position ${destIndex + 1}`;
   }
 
   updateSelectedIndex(delta) {
