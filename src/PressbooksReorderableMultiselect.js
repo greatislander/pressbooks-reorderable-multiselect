@@ -394,9 +394,11 @@ export class PressbooksReorderableMultiselect extends LitElement {
       this.options[option.getAttribute('value')] = option.innerText;
     });
 
-    Array.prototype.forEach.call(input.value.split(','), value => {
-      this.selectedOptions[value] = this.options[value];
-    });
+    if (input.value) {
+      Array.prototype.forEach.call(input.value.split(','), value => {
+        this.selectedOptions[value] = this.options[value];
+      });
+    }
 
     input.remove();
     this.querySelector('label').remove();
