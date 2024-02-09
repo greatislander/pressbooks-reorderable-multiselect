@@ -3,7 +3,7 @@
   "description": "Webcomponent pressbooks-reorderable-multiselect following open-wc recommendations",
   "author": "Pressbooks (Book Oven Inc.)",
   "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "module": "index.js",
   "repository": {
