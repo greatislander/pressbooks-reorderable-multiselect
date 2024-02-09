@@ -403,6 +403,7 @@ export class PressbooksReorderableMultiselect extends LitElement {
     input.remove();
     this.querySelector('label').remove();
     this.querySelector('hint').remove();
+    this.querySelector('select').remove();
 
     this.updateAvailableOptions();
     this.updateSelectedOptions();
