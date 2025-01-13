@@ -12,4 +12,3 @@ jobs:
         id: release
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          package-name: '@pressbooks/reorderable-multiselect'
