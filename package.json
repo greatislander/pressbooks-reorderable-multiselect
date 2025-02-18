@@ -42,7 +42,7 @@
   },
   "customElements": "custom-elements.json",
   "lint-staged": {
-    "*.js,*.mjs": [
+    "*.{css,js,mjs}": [
       "biome check --write"
     ]
   },
