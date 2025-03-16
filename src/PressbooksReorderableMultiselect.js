@@ -1,4 +1,4 @@
-import { html, css, LitElement } from 'lit';
+import { LitElement, css, html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 export class PressbooksReorderableMultiselect extends LitElement {
@@ -266,9 +266,9 @@ export class PressbooksReorderableMultiselect extends LitElement {
 
   selectedOptionsTemplate() {
     return html` ${Object.keys(this.selectedOptions).map(
-        option =>
-          html`<input type="hidden" name="${this.name}[]" .value=${option} />`,
-      )}
+      option =>
+        html`<input type="hidden" name="${this.name}[]" .value=${option} />`,
+    )}
       <ul
         class="selected-options-list"
         role="listbox"
@@ -298,8 +298,9 @@ export class PressbooksReorderableMultiselect extends LitElement {
     return html` <select
         id="available-options"
         @change="${this._handleSelectChange}"
-        aria-label="${this.messages['Available options'] ??
-        'Available options'}"
+        aria-label="${
+          this.messages['Available options'] ?? 'Available options'
+        }"
         ?disabled="${Object.keys(this.availableOptions).length === 0}"
       >
         ${Object.entries(this.availableOptions).map(option =>
@@ -327,9 +328,11 @@ export class PressbooksReorderableMultiselect extends LitElement {
           tabindex=${this.activeDescendant ? 0 : -1}
           aria-keyshortcuts="Alt+ArrowUp"
           @click=${this._handleClick}
-          ?disabled="${!this.activeDescendant ||
-          Object.keys(this.selectedOptions).indexOf(this.activeDescendant) ===
-            0}"
+          ?disabled="${
+            !this.activeDescendant ||
+            Object.keys(this.selectedOptions).indexOf(this.activeDescendant) ===
+              0
+          }"
         >
           ${this.messages['Move Up'] ?? 'Move Up'}
         </button>
@@ -339,9 +342,11 @@ export class PressbooksReorderableMultiselect extends LitElement {
           tabindex=${this.activeDescendant ? 0 : -1}
           aria-keyshortcuts="Alt+ArrowDown"
           @click=${this._handleClick}
-          ?disabled="${!this.activeDescendant ||
-          Object.keys(this.selectedOptions).indexOf(this.activeDescendant) ===
-            Object.keys(this.selectedOptions).length - 1}"
+          ?disabled="${
+            !this.activeDescendant ||
+            Object.keys(this.selectedOptions).indexOf(this.activeDescendant) ===
+              Object.keys(this.selectedOptions).length - 1
+          }"
         >
           ${this.messages['Move Down'] ?? 'Move Down'}
         </button>
