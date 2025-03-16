@@ -30,12 +30,12 @@ export class PressbooksReorderableMultiselect extends LitElement {
           --pb-label-font-family,
           -apple-system,
           BlinkMacSystemFont,
-          'Segoe UI',
+          "Segoe UI",
           Roboto,
           Oxygen-Sans,
           Ubuntu,
           Cantarell,
-          'Helvetica Neue',
+          "Helvetica Neue",
           sans-serif
         );
         font-size: var(--pb-label-font-size, 0.8125rem);
@@ -63,12 +63,12 @@ export class PressbooksReorderableMultiselect extends LitElement {
           --pb-button-font-family,
           -apple-system,
           BlinkMacSystemFont,
-          'Segoe UI',
+          "Segoe UI",
           Roboto,
           Oxygen-Sans,
           Ubuntu,
           Cantarell,
-          'Helvetica Neue',
+          "Helvetica Neue",
           sans-serif
         );
         font-size: var(--pb-button-font-size, 13px);
@@ -156,7 +156,7 @@ export class PressbooksReorderableMultiselect extends LitElement {
         gap: 0.25rem;
       }
 
-      [role='listbox'] {
+      [role="listbox"] {
         border: 1px solid var(--pb-listbox-border-color, #8c8f94);
         border-radius: 2px;
         height: auto;
@@ -169,30 +169,30 @@ export class PressbooksReorderableMultiselect extends LitElement {
         width: var(--pb-selected-options-width, 66%);
       }
 
-      [role='listbox']:focus-visible {
+      [role="listbox"]:focus-visible {
         border-color: #d4002d;
         outline-color: #d4002d;
       }
 
-      [role='option'] {
+      [role="option"] {
         background: var(--pb-listbox-option-background, #fff);
         cursor: default;
         font-family: var(
           --pb-listbox-option-font-family,
           -apple-system,
           BlinkMacSystemFont,
-          'Segoe UI',
+          "Segoe UI",
           Roboto,
           Oxygen-Sans,
           Ubuntu,
           Cantarell,
-          'Helvetica Neue',
+          "Helvetica Neue",
           sans-serif
         );
         padding: var(--pb-listbox-option-padding, 0.25rem 0.5rem);
       }
 
-      [role='option'][aria-selected='true'] {
+      [role="option"][aria-selected="true"] {
         background: var(--pb-listbox-option-background-selected, #d4002d);
         color: var(--pb-listbox-option-color-selected, #fff);
       }
@@ -423,7 +423,6 @@ export class PressbooksReorderableMultiselect extends LitElement {
   }
 
   _handleFocus() {
-    // eslint-disable-next-line prefer-destructuring
     this.activeDescendant = Object.keys(this.selectedOptions)[0];
   }
 
@@ -467,9 +466,9 @@ export class PressbooksReorderableMultiselect extends LitElement {
       this.actionMessage = this.messages['Added $1 to selection']
         ? this.messages['Added $1 to selection'].replace(
             '$1',
-            this.options[this.activeDescendant],
+            this.options[this.selectedAvailableOption],
           )
-        : `Added ${this.options[this.activeDescendant]} to selection`;
+        : `Added ${this.options[this.selectedAvailableOption]} to selection`;
       this.updateAvailableOptions();
     }
 
@@ -522,7 +521,6 @@ export class PressbooksReorderableMultiselect extends LitElement {
       return acc;
     }, {});
 
-    // eslint-disable-next-line prefer-destructuring
     this.selectedAvailableOption = Object.keys(this.availableOptions)[0];
   }
 
