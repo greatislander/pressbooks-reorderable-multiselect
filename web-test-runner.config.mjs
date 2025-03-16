@@ -37,5 +37,6 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   //   playwrightLauncher({ product: 'webkit' }),
   // ],
 
+  browserStartTimeout: 60000,
   // See documentation for all available options
 });
