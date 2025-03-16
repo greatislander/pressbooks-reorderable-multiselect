@@ -6,7 +6,6 @@
     "ignore": [
       "coverage",
       "storybook-static",
-      "**/*.test.js",
       "package.json",
       "package-lock.json"
     ]
@@ -205,7 +204,8 @@
       "quoteStyle": "single",
       "attributePosition": "auto",
       "bracketSpacing": true
-    }
+    },
+    "globals": ["describe", "it"]
   },
   "overrides": [
     {
