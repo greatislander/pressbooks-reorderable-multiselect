@@ -3,7 +3,13 @@
   "vcs": { "enabled": false, "clientKind": "git", "useIgnoreFile": false },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["coverage", "storybook-static", "**/*.test.js"]
+    "ignore": [
+      "coverage",
+      "storybook-static",
+      "**/*.test.js",
+      "package.json",
+      "package-lock.json"
+    ]
   },
   "formatter": {
     "enabled": true,
