@@ -2,15 +2,15 @@
 
 ## [0.0.3](https://github.com/greatislander/pressbooks-reorderable-multiselect/compare/v0.0.2...v0.0.3) (2024-02-08)
 
-* remove default select ([8e1367c](https://github.com/greatislander/pressbooks-reorderable-multiselect/commit/8e1367cdd80aa5e59e944ef8d0cfdf6be263b6b7))
-
 ### Bug Fixes
+
+* remove default select ([8e1367c](https://github.com/greatislander/pressbooks-reorderable-multiselect/commit/8e1367cdd80aa5e59e944ef8d0cfdf6be263b6b7))
 
 ## [0.0.2](https://github.com/greatislander/pressbooks-reorderable-multiselect/compare/v0.0.1...v0.0.2) (2024-02-08)
 
-* handle empty selection properly ([5e2960d](https://github.com/greatislander/pressbooks-reorderable-multiselect/commit/5e2960d0ea9dd6bcbb63be93bdbc7fb6a1262938))
-
 ### Bug Fixes
+
+* handle empty selection properly ([5e2960d](https://github.com/greatislander/pressbooks-reorderable-multiselect/commit/5e2960d0ea9dd6bcbb63be93bdbc7fb6a1262938))
 
 ## [0.0.1](https://github.com/greatislander/pressbooks-reorderable-multiselect/compare/a12dba36dfefea8d14456827061d70df50747da9...v0.0.1) (2024-02-07)
 
