@@ -273,6 +273,7 @@ export class PressbooksReorderableMultiselect extends LitElement {
         class="selected-options-list"
         role="listbox"
         aria-labelledby="${this.name}-label"
+        aria-describedby="${this.name}-hint"
         aria-activedescendant=${ifDefined(this.activeDescendant)}
         tabindex="0"
         @keydown=${this._handleKeydown}
@@ -299,7 +300,8 @@ export class PressbooksReorderableMultiselect extends LitElement {
         id="available-options"
         @change="${this._handleSelectChange}"
         aria-label="${
-          this.messages['Available options'] ?? 'Available options'
+          this.messages['$1 available options'] ??
+          `${this.label} available options`
         }"
         ?disabled="${Object.keys(this.availableOptions).length === 0}"
       >
@@ -312,6 +314,14 @@ export class PressbooksReorderableMultiselect extends LitElement {
       <button
         type="button"
         class="add"
+        aria-label=${
+          this.messages['Add $1']
+            ? this.messages['Add $1'].replace(
+                '$1',
+                this.options[this.selectedAvailableOption],
+              )
+            : `Add ${this.options[this.selectedAvailableOption]}`
+        }
         @click=${this._handleClick}
         ?disabled="${Object.keys(this.availableOptions).length === 0}"
       >
@@ -327,6 +337,14 @@ export class PressbooksReorderableMultiselect extends LitElement {
           class="move-up"
           tabindex=${this.activeDescendant ? 0 : -1}
           aria-keyshortcuts="Alt+ArrowUp"
+          aria-label=${
+            this.messages['Move $1 up']
+              ? this.messages['Move $1 up'].replace(
+                  '$1',
+                  this.options[this.activeDescendant],
+                )
+              : `Move ${this.options[this.activeDescendant]} up`
+          }
           @click=${this._handleClick}
           ?disabled="${
             !this.activeDescendant ||
@@ -341,6 +359,14 @@ export class PressbooksReorderableMultiselect extends LitElement {
           class="move-down"
           tabindex=${this.activeDescendant ? 0 : -1}
           aria-keyshortcuts="Alt+ArrowDown"
+          aria-label=${
+            this.messages['Move $1 down']
+              ? this.messages['Move $1 down'].replace(
+                  '$1',
+                  this.options[this.activeDescendant],
+                )
+              : `Move ${this.options[this.activeDescendant]} down`
+          }
           @click=${this._handleClick}
           ?disabled="${
             !this.activeDescendant ||
@@ -354,6 +380,14 @@ export class PressbooksReorderableMultiselect extends LitElement {
           type="button"
           class="remove"
           tabindex=${this.activeDescendant ? 0 : -1}
+          aria-label=${
+            this.messages['Remove $1']
+              ? this.messages['Remove $1'].replace(
+                  '$1',
+                  this.options[this.activeDescendant],
+                )
+              : `Remove ${this.options[this.activeDescendant]}`
+          }
           @click=${this._handleClick}
           ?disabled="${!this.activeDescendant}"
         >
