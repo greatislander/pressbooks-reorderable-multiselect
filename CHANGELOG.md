@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.0.4](https://github.com/greatislander/pressbooks-reorderable-multiselect/compare/v0.0.3...v0.0.4) (2025-03-19)
+
+
+### Bug Fixes
+
+* adjust accessible names of controls based on selection ([#81](https://github.com/greatislander/pressbooks-reorderable-multiselect/issues/81)) ([8389d50](https://github.com/greatislander/pressbooks-reorderable-multiselect/commit/8389d50b5d33b695fa1da8f0006fd4f80feef257))
+* announce which item has been added properly ([#78](https://github.com/greatislander/pressbooks-reorderable-multiselect/issues/78)) ([4c9bfec](https://github.com/greatislander/pressbooks-reorderable-multiselect/commit/4c9bfec543a57fdde5f055721dc1fa8bf5c8b1ef))
+* **deps:** update dependency lit to v3.2.1 ([#44](https://github.com/greatislander/pressbooks-reorderable-multiselect/issues/44)) ([c3741e4](https://github.com/greatislander/pressbooks-reorderable-multiselect/commit/c3741e4a52d11b20274829a83b27b0b795e32f7b))
+
 ## [0.0.3](https://github.com/greatislander/pressbooks-reorderable-multiselect/compare/v0.0.2...v0.0.3) (2024-02-08)
 
 ### Bug Fixes
