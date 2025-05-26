@@ -3,6 +3,8 @@
 .husky
 .storybook
 .vscode
+.zed
+biome.json
 commitlint.config.js
 coverage
 demo
