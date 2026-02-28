@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.5](https://github.com/greatislander/pressbooks-reorderable-multiselect/compare/v0.0.4...v0.0.5) (2026-02-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lit to v3.3.0 ([#86](https://github.com/greatislander/pressbooks-reorderable-multiselect/issues/86)) ([3ead5a7](https://github.com/greatislander/pressbooks-reorderable-multiselect/commit/3ead5a7576d047be6d05466167d31e8a6e7f1ca0))
+* **deps:** update dependency lit to v3.3.1 ([#107](https://github.com/greatislander/pressbooks-reorderable-multiselect/issues/107)) ([28536ca](https://github.com/greatislander/pressbooks-reorderable-multiselect/commit/28536ca68497f579460b61e860ce453ac8e533d9))
+
 ## [0.0.4](https://github.com/greatislander/pressbooks-reorderable-multiselect/compare/v0.0.3...v0.0.4) (2025-03-19)
 
 
